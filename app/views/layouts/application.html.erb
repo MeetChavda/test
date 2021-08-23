@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AgTest</title>
+  
+  <script src="https://unpkg.com/ag-grid-enterprise/dist/ag-grid-enterprise.min.noStyle.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+  <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-alpine.css">
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <button onclick="getSelectedRows()">Get Selected Rows</button>
+
+<div style="height:10px;"></div>
+<div id="employee_grid_header" style="height:30px;text-align:center"><u><strong>EMPLOYEE GRID</strong></u></div>
+<div style="height:20px;"></div>
+<div id="employee_grid" class = "ag-theme-alpine" style="height: 500px;"></div>
+<%= yield %>
+
+</body>
+</html>
