@@ -10,10 +10,30 @@
       </ul>
     </div>
   <% end %>
-
+ 
   <div class="field">
     <%= f.label :emp_id %><br />
     <%= f.text_field :emp_id %>
+  </div>
+  <div class="field">
+    <%= f.label :emp_name %><br />
+    <%= f.text_field :emp_name %>
+  </div>
+  <div class="field">
+    <%= f.label :emp_email %><br />
+    <%= f.text_field :emp_email %>
+  </div>
+  <div class="field">
+    <%= f.label :team_leader %><br />
+    <%= f.text_field :team_leader %>
+  </div>
+  <div class="field">
+    <%= f.label :designation %><br />
+    <%= f.text_field :designation %>
+  </div>
+  <div class="field">
+    <%= f.label :bank %><br />
+    <%= f.text_field :bank %>
   </div>
   <div class="field">
     <%= f.label :bank_ac %><br />
@@ -22,6 +42,10 @@
   <div class="field">
     <%= f.label :doj %><br />
     <%= f.text_field :doj %>
+  </div>
+  <div class="field">
+    <%= f.label :doj %><br />
+    <%= f.select :folder_id, Folder.all.map { |memberrole| [ memberrole.f_name, memberrole.id ] }, {}, {class: "form-select form-select-lg mb-3" }  %>
   </div>
   <div class="actions">
     <%= f.submit %>

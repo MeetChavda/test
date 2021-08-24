@@ -11,12 +11,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <button onclick="getSelectedRows()">Get Selected Rows</button>
-
-<div style="height:10px;"></div>
-<div id="employee_grid_header" style="height:30px;text-align:center"><u><strong>EMPLOYEE GRID</strong></u></div>
-<div style="height:20px;"></div>
-<div id="employee_grid" class = "ag-theme-alpine" style="height: 500px;"></div>
+  
 <%= yield %>
 
 </body>

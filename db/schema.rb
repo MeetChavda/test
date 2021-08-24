@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20210818101258) do
+ActiveRecord::Schema.define(:version => 20210823092339) do
 
   create_table "employees", :force => true do |t|
     t.string   "emp_id",                          :null => false
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(:version => 20210818101258) do
     t.string   "doj",         :default => "null"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+    t.integer  "folder_id"
+  end
+
+  add_index "employees", ["folder_id"], :name => "index_employees_on_folder_id"
+
+  create_table "folders", :force => true do |t|
+    t.string   "f_name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

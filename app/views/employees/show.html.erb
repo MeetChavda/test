@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<%
+=begin%>
+ <p id="notice"><%= notice %></p>
 
 <p>
   <b>Emp:</b>
@@ -17,4 +19,76 @@
 
 
 <%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+<%= link_to 'Back', employees_path %> 
+<%
+=end%>
+
+<script>
+const autoGroupColumnDef = {
+           headerName: "Foldername",
+           field: "folder_id",
+           cellRenderer:'agGroupCellRenderer',
+           cellRendererParams: {
+                suppressCount: true,
+                checkbox: true
+
+
+           }
+       }
+// function rowDragFunction(params: RowDragCallbackParams) => boolean;
+
+// interface for params
+// interface RowDragCallbackParams {
+//     node: RowNode;
+//     data: any;
+//     column: Column;
+//     colDef: ColDef;
+//     context: any;
+//     api: GridApi;
+//     columnApi: ColumnApi;
+// }
+var gridOptions =
+{
+columnDefs: <%= @coldef_arr.to_json.html_safe %>,
+rowData: <%= Employee.get_employee_data.to_json.html_safe %>,
+autoGroupColumnDef: autoGroupColumnDef,
+groupSelectsChildren: true,
+pagination: true,
+paginationPageSize: 5,
+
+rowGroupPanelShow: 'always',
+animateRows:    true,
+rowSelection: 'multiple',
+rowHeight: 50,
+headerHeight: 60,
+suppressRowClickSelection: true,
+enableColResize: true,
+enableStatusBar: true,
+enableRangeSelection: true,
+};
+document.addEventListener('DOMContentLoaded', function(){
+var gridDiv = document.querySelector('#employee_grid');
+new agGrid.Grid(gridDiv, gridOptions);
+});
+const getSelectedRows = () => {
+    const selectedNodes = gridOptions.api.getSelectedNodes()
+    const selectedData = selectedNodes.map( node => node.data )
+    const selectedDataStringPresentation = selectedData.map( node => `${node.make} ${node.model}`).join(', ')
+    alert(`Selected nodes: ${selectedDataStringPresentation}`);
+}
+// refresh the grid
+gridOptions.api.refreshView();
+
+// resize columns in the grid to fit the available space
+gridOptions.columnApi.sizeColumnsToFit();
+
+// function manage_header_chekbox(){
+// if(document.getElementById("aghcb").checked == true){
+// gridOptions.api.selectAll();
+// $('#aghcb').attr('checked', true);
+// }else{
+// gridOptions.api.deselectAll();
+// }
+// }
+
+</script>

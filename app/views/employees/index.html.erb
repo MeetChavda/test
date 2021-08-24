@@ -1,8 +1,23 @@
+    <%
+=begin%>
+ <% @empall.each do |emp| %>
+        <% emp.folder.f_name%>
+    <% end %> 
+<%
+=end%>
+<button onclick="getSelectedRows()">Get Selected Rows</button>
+  <%= link_to 'New Folder', new_folder_path %>
+  <%= link_to 'New Emplyee', new_employee_path %>
+
+
+<div style="height:10px;"></div>
+<div id="employee_grid_header" style="height:30px;text-align:center"><u><strong>EMPLOYEE GRID</strong></u></div>
+<div style="height:20px;"></div>
+<div id="employee_grid" class = "ag-theme-alpine" style="height: 500px;"></div>
 
 <script>
 const autoGroupColumnDef = {
-           headerName: "Employee Name",
-           field: "emp_name",
+         
            cellRenderer:'agGroupCellRenderer',
            cellRendererParams: {
                 suppressCount: true,
@@ -32,7 +47,7 @@ groupSelectsChildren: true,
 pagination: true,
 paginationPageSize: 5,
 
-rowGroupPanelShow: 'always',
+// rowGroupPanelShow: 'always',
 animateRows:    true,
 rowSelection: 'multiple',
 rowHeight: 50,
