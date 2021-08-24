@@ -19,7 +19,7 @@ class EmployeesController < ApplicationController
         @coldef_arr = [{:headerName=> "#",:field=> "#",sortable: true,filter: true,:cellStyle=>{"text-align"=>"center"},"width"=>40, "headerCellTemplate"=>"<span style='padding-top:15px;'><input type='checkbox' id='aghcb' onclick=manage_header_chekbox()></span>" },
           {:headerName => "ID",:field => "id",sortable: true,filter: true},
           {:headerName=>"Employee ID",:field=>"emp_id",sortable: true,filter: true},
-          {:headerName=> "Employee Name", :field=> "emp_name",sortable: true,filter: true},
+          {:headerName=> "Employee Name", :field=> "emp_name",sortable: true,filter: true,editable: true},
           {:headerName=> "Email ID", :field=> "emp_email",sortable: true,filter: true},
           {:headerName=> "Team Leader", :field=> "team_leader",sortable: true,filter: true },
           {:headerName=> "Designation", :field=> "designation",sortable: true,filter: true},
